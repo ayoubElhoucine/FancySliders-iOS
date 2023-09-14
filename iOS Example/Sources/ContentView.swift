@@ -23,11 +23,11 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             
-            RatingSliderEx()
-            
-            StepsSliderEx()
-            
-            SwitchSliderEx()
+//            RatingSliderEx()
+//
+//            StepsSliderEx()
+//
+//            SwitchSliderEx()
             
             SliderToButtonEx()
 
@@ -148,28 +148,83 @@ struct SwitchSliderEx: View {
 }
 
 struct SliderToButtonEx: View {
+    
+    @State private var thumbColor = Color.green
+    @State private var thumbColor2 = Color.red
+    @State private var icon = "chevron.right.2"
+    @State private var icon2 = "trash"
+    
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 25) {
             Text("Slider to button")
-                .fontWeight(.semibold)
+                .fontWeight(.bold)
                 .padding(.horizontal, 16)
             
-            SliderToButton(width: UIScreen.main.bounds.width - 32, height: 80, title: "Slide to call", titleColor: .black, bgColor: .green.opacity(0.8), initialMode: .button) {
+            // slide to call
+            SliderToButton(width: UIScreen.main.bounds.width - 32, height: 80, title: "Slide to call", titleColor: .black, bgColor: thumbColor.opacity(0.4), initialMode: .slider) {
                 Circle()
-                    .fill(.white)
+                    .fill(thumbColor)
                     .padding(6)
                     .overlay {
                         Image(systemName: "phone.fill")
                             .resizable()
-                            .foregroundColor(.green)
+                            .foregroundColor(.white)
                             .scaledToFit()
                             .frame(width: 30)
                     }
                 
             } didFinishSliding: {
-                print("Finish sliding !")
+                withAnimation {
+                    thumbColor = .red
+                }
             } didClick: {
-                print("did click !")
+                withAnimation {
+                    thumbColor = .green
+                }
+            }
+            
+            // slide right
+            SliderToButton(width: UIScreen.main.bounds.width - 32, height: 80, title: "Slide right", titleColor: .black, bgColor: .gray.opacity(0.4), initialMode: .slider) {
+                Circle()
+                    .fill(.gray)
+                    .padding(6)
+                    .overlay {
+                        Image(systemName: icon)
+                            .resizable()
+                            .foregroundColor(.white)
+                            .scaledToFit()
+                            .frame(width: 25)
+                    }
+                
+            } didFinishSliding: {
+                icon = "xmark"
+            } didClick: {
+                icon = "chevron.right.2"
+            }
+            
+            // slide to remove
+            SliderToButton(width: UIScreen.main.bounds.width - 32, height: 80, title: "Slide to remove", titleColor: .black, bgColor: thumbColor2.opacity(0.4), initialMode: .slider) {
+                Circle()
+                    .fill(thumbColor2)
+                    .padding(6)
+                    .overlay {
+                        Image(systemName: icon2)
+                            .resizable()
+                            .foregroundColor(.white)
+                            .scaledToFit()
+                            .frame(width: 25)
+                    }
+                
+            } didFinishSliding: {
+                icon2 = "checkmark"
+                withAnimation {
+                    thumbColor2 = Color.blue
+                }
+            } didClick: {
+                icon2 = "trash"
+                withAnimation {
+                    thumbColor2 = Color.red
+                }
             }
         }
     }
