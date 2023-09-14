@@ -150,6 +150,8 @@ struct SliderToButtonEx: View {
             Text("Slider to button")
                 .fontWeight(.bold)
                 .padding(.horizontal, 16)
+                .padding(.bottom, 40)
+            
             
             // slide to call
             SliderToButton(width: UIScreen.main.bounds.width - 32, height: 80, title: "Slide to call", titleColor: .black, bgColor: thumbColor.opacity(0.4), initialMode: .slider) {
