@@ -17,10 +17,10 @@ struct ContentView: View {
 //            RatingSliderEx()
 //
 //            StepsSliderEx()
-//
-//            SwitchSliderEx()
+
+            SwitchSliderEx()
             
-            SliderToButtonEx()
+//            SliderToButtonEx()
 
         }
     }
@@ -101,19 +101,20 @@ struct StepsSliderEx: View {
 
 struct SwitchSliderEx: View {
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 20) {
             Text("Switch Slider")
-                .fontWeight(.semibold)
+                .fontWeight(.bold)
                 .padding(.horizontal, 16)
+                .padding(.bottom, 40)
             
-            SwitchSlider(width: UIScreen.main.bounds.width - 32, height: 80, title: "Switch On", titleColor: .white, colorOn: .green, colorOff: .red.opacity(0.8)) {
+            SwitchSlider(width: UIScreen.main.bounds.width - 60, height: 80, title: "Switch On", titleColor: .black, colorOn: .green, colorOff: .red.opacity(0.3)) {
                 Circle()
                     .fill(.white)
                     .padding(6)
                     .overlay {
                         Image(systemName: "power")
                             .resizable()
-                            .foregroundColor(.black.opacity(0.8))
+                            .foregroundColor(.green)
                             .scaledToFit()
                             .frame(width: 30)
                     }
@@ -121,9 +122,23 @@ struct SwitchSliderEx: View {
                 print("Switch value: \(value)")
             }
             
-            SwitchSlider(width: UIScreen.main.bounds.width - 32, height: 80, title: "Switch On", titleColor: .white, colorOn: .green, colorOff: .red.opacity(0.8)) {
+            SwitchSlider(width: UIScreen.main.bounds.width - 60, height: 80, title: "Switch On", titleColor: .black, colorOn: .green, colorOff: .gray.opacity(0.3)) {
                 Circle()
-                    .fill(.clear)
+                    .fill(.green)
+                    .overlay {
+                        Image(systemName: "power")
+                            .resizable()
+                            .foregroundColor(.white)
+                            .scaledToFit()
+                            .frame(width: 30)
+                    }
+            } didComplete: { value in
+                print("Switch value: \(value)")
+            }
+            
+            SwitchSlider(width: UIScreen.main.bounds.width - 60, height: 80, title: "Switch On", titleColor: .black, colorOn: .blue, colorOff: .blue.opacity(0.2)) {
+                Circle()
+                    .fill(.blue)
                     .overlay {
                         Image(systemName: "power")
                             .resizable()
