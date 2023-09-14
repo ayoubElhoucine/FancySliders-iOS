@@ -10,15 +10,6 @@ import SwiftUI
 import FancySliders
 
 
-//struct SwiftUIxxPROJECTxNAMExx: UIViewRepresentable {
-//    func makeUIView(context: Context) -> UIView {
-//        return UIKitView()
-//    }
-//
-//    func updateUIView(_ uiView: UIView, context: Context) {
-//    }
-//}
-
 struct ContentView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
