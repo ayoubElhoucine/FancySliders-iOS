@@ -66,7 +66,7 @@ struct StepsSliderEx: View {
             Text("Slider with two steps")
                 .fontWeight(.semibold)
                 .padding(.horizontal, 16)
-            Slider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 2) {
+            StepSlider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 2) {
                 Circle()
                     .fill(.white)
                     .padding(5)
@@ -88,7 +88,7 @@ struct StepsSliderEx: View {
             Text("Slider with four steps")
                 .fontWeight(.semibold)
                 .padding(.horizontal, 16)
-            Slider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 4) {
+            StepSlider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 4) {
                 Circle()
                     .fill(.white)
                     .padding(5)

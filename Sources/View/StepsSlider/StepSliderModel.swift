@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-extension Slider {
+extension StepSlider {
     class Model: ObservableObject {
         
         private var _stepItemList = [StepItem]()

@@ -10,7 +10,7 @@ import SwiftUI
 
 
 @available(iOS 15.0, *)
-public struct Slider<Content: View, Thumbnail: View>: View {
+public struct StepSlider<Content: View, Thumbnail: View>: View {
     
     @StateObject private var model = Model()
     
