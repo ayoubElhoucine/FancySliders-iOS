@@ -11,8 +11,6 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
 ## Usage
 ### Slider to button exambple:
 
-
-`
            
             @State private var thumbColor = Color.green
             SliderToButton(
@@ -46,7 +44,6 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
                     thumbColor = .green
                 }
             }
-`
 
 
 ## Author
