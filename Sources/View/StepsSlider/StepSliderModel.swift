@@ -39,10 +39,13 @@ extension StepSlider {
             }
         }
         
-        func updateDragPosition(value: DragGesture.Value, width: CGFloat, height: CGFloat) {
+        func updateDragPosition(value: DragGesture.Value, onSliding: @escaping (Int) -> Void, width: CGFloat, height: CGFloat) {
             if shimmerStatus { _shimmerStatus = false }
             if value.location.x < width - height/2 && value.location.x > height/2 {
                 _dragPoint.x = value.location.x
+                DispatchQueue.main.async {
+                    if let value = self.getStepItem(value: value.location.x)?.value { onSliding(value) }
+                }
             }
         }
         

@@ -17,17 +17,19 @@ public struct StepSlider<Content: View, Thumbnail: View>: View {
     let width: CGFloat
     let height: CGFloat
     let stepCount: Int
-    let didComplete: (Int) -> Void
     let content: () -> Content
     let thumbnail: () -> Thumbnail
+    let didComplete: (Int) -> Void
+    let onSliding: (Int) -> Void
     
-    public init(width: CGFloat, height: CGFloat, stepCount: Int, thumbnail: @escaping () -> Thumbnail, content: @escaping () -> Content, didComplete: @escaping (Int) -> Void) {
+    public init(width: CGFloat, height: CGFloat, stepCount: Int, thumbnail: @escaping () -> Thumbnail, content: @escaping () -> Content, onSliding: @escaping (Int) -> Void, didComplete: @escaping (Int) -> Void) {
         self.width = width
         self.height = height
         self.stepCount = stepCount
         self.content = content
         self.thumbnail = thumbnail
         self.didComplete = didComplete
+        self.onSliding = onSliding
     }
     
     public var body: some View {
@@ -45,7 +47,7 @@ public struct StepSlider<Content: View, Thumbnail: View>: View {
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
-                                    model.updateDragPosition(value: value, width: width, height: height)
+                                    model.updateDragPosition(value: value, onSliding: onSliding, width: width, height: height)
                                 }
                                 .onEnded { value in
                                     model.endDraging(value: value, didComplete: didComplete, width: width, height: height)

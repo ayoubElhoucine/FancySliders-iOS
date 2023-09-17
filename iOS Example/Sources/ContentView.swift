@@ -16,9 +16,9 @@ struct ContentView: View {
             
 //            RatingSliderEx()
 //
-//            StepsSliderEx()
+            StepsSliderEx()
 
-            SwitchSliderEx()
+//            SwitchSliderEx()
             
 //            SliderToButtonEx()
 
@@ -52,49 +52,58 @@ struct RatingSliderEx: View {
 }
 
 struct StepsSliderEx: View {
+    
+    @State private var text = "1"
+    @State private var color = Color.gray
+    
+    @State private var emoji = "angry_emoji"
+    
     var body: some View {
         VStack(spacing: 10) {
-            Text("Slider with two steps")
+            Text("Slider with 5 steps")
                 .fontWeight(.semibold)
                 .padding(.horizontal, 16)
-            StepSlider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 2) {
+            StepSlider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 5) {
                 Circle()
-                    .fill(.white)
+                    .fill(color)
                     .padding(5)
                     .overlay {
-                        Image(systemName: "trash.fill")
-                            .resizable()
-                            .foregroundColor(.red)
-                            .scaledToFit()
-                            .frame(width: 25)
+                        Text(text).fontWeight(.bold).foregroundColor(.white)
                     }
             } content: {
-                Capsule().fill(Color.red.opacity(0.5))
+                Capsule().fill(Color.gray.opacity(0.2))
+            } onSliding: { value in
+                text = (value + 1).description
             } didComplete: { value in
                 print("step value: \(value)")
             }
             
             Spacer().frame(height: 10)
             
-            Text("Slider with four steps")
+            Text("Slider with three steps")
                 .fontWeight(.semibold)
                 .padding(.horizontal, 16)
-            StepSlider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 4) {
-                Circle()
-                    .fill(.white)
-                    .padding(5)
-                    .overlay {
-                        Image(systemName: "arrow.forward")
-                            .resizable()
-                            .foregroundColor(.black.opacity(0.8))
-                            .scaledToFit()
-                            .frame(width: 25)
-                    }
+            StepSlider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 3) {
+                Image(emoji)
+                    .resizable()
+                    .frame(width: 55, height: 55)
             } content: {
-                Capsule().fill(.gray.opacity(0.6))
+                Capsule().fill(Color.yellow.opacity(0.1))
+                    .overlay {
+                        Capsule().stroke(.yellow, lineWidth: 2)
+                        Text("Slide right").fontWeight(.semibold)
+                    }
+            } onSliding: { value in
+                switch value {
+                case 0: emoji = "angry_emoji"
+                case 1: emoji = "simple_emoji"
+                case 2: emoji = "lovely_emoji"
+                default: break
+                }
             } didComplete: { value in
-                print("step value: \(value)")
+                
             }
+                
         }
     }
 }
