@@ -14,9 +14,9 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             
-//            RatingSliderEx()
-//
-            StepsSliderEx()
+            RatingSliderEx()
+
+//            StepsSliderEx()
 
 //            SwitchSliderEx()
             
