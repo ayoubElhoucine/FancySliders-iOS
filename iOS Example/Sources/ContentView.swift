@@ -60,7 +60,7 @@ struct StepsSliderEx: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            Text("Slider with 5 steps")
+            Text("Slider with five steps")
                 .fontWeight(.semibold)
                 .padding(.horizontal, 16)
             StepSlider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 5) {
@@ -71,19 +71,31 @@ struct StepsSliderEx: View {
                         Text(text).fontWeight(.bold).foregroundColor(.white)
                     }
             } content: {
-                Capsule().fill(Color.gray.opacity(0.2))
+                Capsule().fill(color.opacity(0.2))
+                    .overlay {
+                        Capsule().stroke(color, lineWidth: 1)
+                        Text("Slide right").fontWeight(.semibold)
+                    }
             } onSliding: { value in
                 text = (value + 1).description
+                switch value {
+                case 0: color = .gray
+                case 1: color = .blue
+                case 2: color = .green
+                case 3: color = .orange
+                case 4: color = .red
+                default: break
+                }
             } didComplete: { value in
-                print("step value: \(value)")
+                print("did complete: value: \(value)")
             }
             
             Spacer().frame(height: 10)
             
-            Text("Slider with three steps")
+            Text("Slider with four steps")
                 .fontWeight(.semibold)
                 .padding(.horizontal, 16)
-            StepSlider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 3) {
+            StepSlider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 4) {
                 Image(emoji)
                     .resizable()
                     .frame(width: 55, height: 55)
@@ -97,11 +109,45 @@ struct StepsSliderEx: View {
                 switch value {
                 case 0: emoji = "angry_emoji"
                 case 1: emoji = "simple_emoji"
+                case 2: emoji = "lough_emoji"
+                case 3: emoji = "lovely_emoji"
+                default: break
+                }
+            } didComplete: { value in
+                print("did complete: value: \(value)")
+            }
+            
+            Spacer().frame(height: 10)
+            
+            Text("Slider with two steps")
+                .fontWeight(.semibold)
+                .padding(.horizontal, 16)
+            StepSlider(width: UIScreen.main.bounds.width - 32, height: 60, stepCount: 2) {
+                Circle()
+                    .fill(.red)
+                    .padding(5)
+                    .overlay {
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.white)
+                            .frame(height: 22)
+                    }
+            } content: {
+                Capsule().fill(Color.red.opacity(0.2))
+                    .overlay {
+                        Capsule().stroke(.red, lineWidth: 1)
+                        Text("Slide right").fontWeight(.semibold)
+                    }
+            } onSliding: { value in
+                switch value {
+                case 0: emoji = "angry_emoji"
+                case 1: emoji = "simple_emoji"
                 case 2: emoji = "lovely_emoji"
                 default: break
                 }
             } didComplete: { value in
-                
+                print("did complete: value: \(value)")
             }
                 
         }
