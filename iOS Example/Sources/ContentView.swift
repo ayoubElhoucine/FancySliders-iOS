@@ -140,12 +140,7 @@ struct StepsSliderEx: View {
                         Text("Slide right").fontWeight(.semibold)
                     }
             } onSliding: { value in
-                switch value {
-                case 0: emoji = "angry_emoji"
-                case 1: emoji = "simple_emoji"
-                case 2: emoji = "lovely_emoji"
-                default: break
-                }
+                print("on sliding: value: \(value)")
             } didComplete: { value in
                 print("did complete: value: \(value)")
             }

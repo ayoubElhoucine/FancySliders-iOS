@@ -1,6 +1,6 @@
 # Fancy sliders
 
-![](SliderToButtonEx.gif) ![](SwitchSliderEx.gif)  
+![](SliderToButtonEx.gif) ![](SwitchSliderEx.gif) ![](StepsSliderEx.gif)
 
 
 ## Example
