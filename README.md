@@ -104,7 +104,7 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
             }
 
 ### Steps Slider exambple:
-#### you need to add the images to assets package and use them in images, you need five images that will represent your rating from one to five star
+you need to add the images to assets package and use them in images, you need five images that will represent your rating from one to five star
 
             RatingSlider (
                 width: UIScreen.main.bounds.width - 32,
