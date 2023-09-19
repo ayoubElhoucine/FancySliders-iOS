@@ -44,7 +44,64 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
                     thumbColor = .green
                 }
             }
+            
+            
+### Switch Slider exambple:
 
+            SwitchSlider(
+                width: UIScreen.main.bounds.width - 60, 
+                height: 80, 
+                title: "Switch On",
+                titleColor: .black, 
+                colorOn: .green, 
+                colorOff: .red.opacity(0.3)
+            ) {
+                // thumnail view factory: you can customize the thumb view depends on your need
+                Circle()
+                    .fill(.white)
+                    .padding(6)
+                    .overlay {
+                        Image(systemName: "power")
+                            .resizable()
+                            .foregroundColor(.green)
+                            .scaledToFit()
+                            .frame(width: 30)
+                    }
+            } didComplete: { value in
+                // value will be true or false
+            }
+
+
+### Steps Slider exambple:
+
+            StepSlider(
+                width: UIScreen.main.bounds.width - 32, 
+                height: 60, 
+                stepCount: 2 // number of steps
+            ) {
+                // thumnail view factory: you can customize the thumb view depends on your need
+                Circle()
+                    .fill(.red)
+                    .padding(5)
+                    .overlay {
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.white)
+                            .frame(height: 22)
+                    }
+            } content: {
+                // content view factory: you can customize the content view depends on your need
+                Capsule().fill(Color.red.opacity(0.2))
+                    .overlay {
+                        Capsule().stroke(.red, lineWidth: 1)
+                        Text("Slide right").fontWeight(.semibold)
+                    }
+            } onSliding: { value in
+                // trigered when user is on sliding, the value will be int from 0 to (stepCount - 1)
+            } didComplete: { value in
+                // trigered when user finish sliding, the value will be int from 0 to (stepCount - 1)
+            }
 
 ## Author
 
