@@ -103,6 +103,28 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
                 // trigered when user finish sliding, the value will be int from 0 to (stepCount - 1)
             }
 
+### Steps Slider exambple:
+#### you need to add the images to assets package and use them in images, you need five images that will represent your rating from one to five star
+
+            RatingSlider (
+                width: UIScreen.main.bounds.width - 32,
+                height: 58,
+                images: RatingImages(firstImage: "emoji-1", secondImage: "emoji-2", thirdImage: "emoji-3", fourthImage: "emoji-4", fifthImage: "emoji-5")
+            ) {
+                // content view factory: you can customize the content view depends on your need
+                ZStack {
+                    Capsule().fill(.yellow.opacity(0.2))
+                        .overlay {
+                            Capsule().stroke(.yellow, lineWidth: 2)
+                        }
+                    Text("Rate your experience!")
+                        .foregroundColor(.black)
+                }
+            } didRate: { value in
+                // trigered when user finish rating, the value will be int from 0 to 4
+            }
+
+
 ## Author
 
 __Elhoucine Ayoub__

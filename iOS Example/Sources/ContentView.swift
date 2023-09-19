@@ -14,11 +14,11 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             
-//            RatingSliderEx()
+            RatingSliderEx()
 
 //            StepsSliderEx()
 
-            SwitchSliderEx()
+//            SwitchSliderEx()
             
 //            SliderToButtonEx()
 
@@ -35,18 +35,19 @@ struct RatingSliderEx: View {
             RatingSlider (
                 width: UIScreen.main.bounds.width - 32,
                 height: 58,
-                images: RatingImages(firstImage: "emoji-1", secondImage: "emoji-2", thirdImage: "emoji-3", fourthImage: "emoji-4", fifthImage: "emoji-5"),
-                content: {
-                    ZStack {
-                        Capsule().fill(.yellow)
-                        Text("Rate your experience!")
-                            .foregroundColor(.white)
-                    }
-                },
-                didRate: { value in
-                    print("rate value: \(value)")
+                images: RatingImages(firstImage: "emoji-1", secondImage: "emoji-2", thirdImage: "emoji-3", fourthImage: "emoji-4", fifthImage: "emoji-5")
+            ) {
+                ZStack {
+                    Capsule().fill(.yellow.opacity(0.2))
+                        .overlay {
+                            Capsule().stroke(.yellow, lineWidth: 2)
+                        }
+                    Text("Rate your experience!")
+                        .foregroundColor(.black)
                 }
-            )
+            } didRate: { value in
+                print("rate value: \(value)")
+            }
         }
     }
 }
