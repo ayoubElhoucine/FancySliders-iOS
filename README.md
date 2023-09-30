@@ -3,6 +3,24 @@
 ![](SliderToButtonEx.gif)    ![](SwitchSliderEx.gif) 
 ![](StepsSliderEx.gif)
 
+The various components are: 
+* `LSlider` - a spatially adaptive slider that fits to its container at any angle you decide.
+* `RSlider` - A circularly shaped slider which restricts movement of the thumb to the radius of the circle 
+* `PSlider` - Turn any `Shape` into its very own slider!
+* `OverflowSlider` - A meter like slider which has two moving components, the track and the thumb. Also has velocity based gestures implemented 
+* `TrackPad` - A 2D version of a normal slider, which restricts displacement of the thumb to the bounds of the track 
+* `RadialPad` - A joystick like component that does not reset the position of the thumb upon gesture end. 
+* `Joystick` - an onscreen joystick that can appear anywhere the user drags within the defined hitbox, if the drag ends inside the lockbox, the joystick remains onscreen locked in the forward position. if the drag ends **not** inside the lockbox the joystick fades away until the hitbox is dragged again.
+
+
+
+## Requirements 
+
+**FancySliders** is a SwiftUI package.
+
+* macOS 10.15 or Greater 
+* iOS 15 or Greater 
+
 
 ## Installation
 
@@ -139,6 +157,8 @@ you need to add the images to assets package and use them in images, you need fi
             }
 ```
 
+## Contributions
+Feel free to contribute via fork/pull request to main branch. If you want new feature or report a bug then start a new issue.
 
 ## Author
 
