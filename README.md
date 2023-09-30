@@ -10,7 +10,9 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
 
 ## Usage
 #### First you need to import the package
+```swift
             import FancySliders
+```
             
 ### Slider to button exambple:
            
