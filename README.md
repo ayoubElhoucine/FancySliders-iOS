@@ -14,7 +14,7 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
             
 ### Slider to button exambple:
            
-            ```swift
+```swift
             @State private var thumbColor = Color.green
             SliderToButton(
                 width: UIScreen.main.bounds.width - 32, 
@@ -47,12 +47,12 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
                     thumbColor = .green
                 }
             }
-            ```
+```
             
             
 ### Switch Slider exambple:
 
-            ```swift
+```swift
             SwitchSlider(
                 width: UIScreen.main.bounds.width - 60, 
                 height: 80, 
@@ -75,12 +75,12 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
             } didComplete: { value in
                 // value will be true or false
             }
-            ```
+```
 
 
 ### Steps Slider exambple:
 
-            ```swift
+```swift
             StepSlider(
                 width: UIScreen.main.bounds.width - 32, 
                 height: 60, 
@@ -109,12 +109,12 @@ Add this to your project using Swift Package Manager. In Xcode that is simply: F
             } didComplete: { value in
                 // trigered when user finish sliding, the value will be int from 0 to (stepCount - 1)
             }
-            ```
+```
 
 ### Steps Slider exambple:
 you need to add the images to assets package and use them in images, you need five images that will represent your rating from one to five star
 
-            ```swift
+```swift
             RatingSlider (
                 width: UIScreen.main.bounds.width - 32,
                 height: 58,
@@ -132,7 +132,7 @@ you need to add the images to assets package and use them in images, you need fi
             } didRate: { value in
                 // trigered when user finish rating, the value will be int from 0 to 4
             }
-            ```
+```
 
 
 ## Author
